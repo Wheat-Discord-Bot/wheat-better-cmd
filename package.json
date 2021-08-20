@@ -1,0 +1,14 @@
+{
+  "name": "wheat-better-cmd",
+  "version": "1.0.0",
+  "description": "Wheat Better CMD is a exclusive package of Bot Discord Wheat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "EMERALD",
+  "license": "CC BY-NC 4.0",
+  "dependencies": {
+    "discord.js": "^13.1.0"
+  }
+}
