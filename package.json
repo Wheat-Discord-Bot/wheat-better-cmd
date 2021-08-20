@@ -1,6 +1,6 @@
 {
   "name": "wheat-better-cmd",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Wheat Better CMD is a exclusive package of Bot Discord Wheat",
   "main": "index.js",
   "scripts": {
@@ -10,5 +10,10 @@
   "license": "CC BY-NC 4.0",
   "dependencies": {
     "discord.js": "^13.1.0"
+  },
+  "homepage": "https://github.com/emeralddd/wheat-better-cmd#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emeralddd/wheat-better-cmd"
   }
 }
