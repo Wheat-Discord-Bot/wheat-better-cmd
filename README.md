@@ -1,5 +1,28 @@
 ## About
 Wheat Better CMD is a exclusive package of Bot Discord **Wheat** 
+## Install 
+You can install this package via NPM
+```
+npm i wheat-better-cmd
+```
+## Example
+```
+const bot = require('wheat-better-cmd')
+const {Client, Intents} = require('discord.js')
+const client = new Client({intents: [Intents.FLAGS.GUILDS]})
+
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+})
+
+client.on('messageCreate', async message => {
+	if(message.content === 'ping') {
+		bot.wheatSend(`pong`)
+	}
+})
+
+client.login('token')
+```
 ## License
 Wheat Better CND is licensed under the terms of Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0).
 ### You are free to:
