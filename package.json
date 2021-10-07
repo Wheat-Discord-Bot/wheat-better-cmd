@@ -1,6 +1,6 @@
 {
   "name": "wheat-better-cmd",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "Wheat Better CMD is a exclusive package of Bot Discord Wheat",
   "main": "index.js",
   "scripts": {
