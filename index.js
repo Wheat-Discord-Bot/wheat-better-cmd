@@ -1,6 +1,11 @@
 const Discord = require('discord.js')
 const fs = require('fs')
 
+/**
+ * @param {Discord.Message} MESSAGE 
+ * @param {string} content 
+ */
+
 module.exports.wheatSend = async (MESSAGE,content) => {
     try {
         const msg = await MESSAGE.channel.send(content)
@@ -13,17 +18,29 @@ module.exports.wheatSend = async (MESSAGE,content) => {
     }
 }
 
+/**
+ * @param {Discord.Message} MESSAGE 
+ * @param {Array} embedArray
+ */
+
 module.exports.wheatEmbedSend = async (MESSAGE,embedArray) => {
     try {
         const msg = await MESSAGE.channel.send({embeds:embedArray})
         return msg
     } catch(error) {
         if(error) {
+            console.log(`wheatEmbedSend: ${error}`)
             await MESSAGE.author.send("Bot bị thiếu 1 trong các quyền `SEND_MESSAGES`, `EMBED_LINKS` hoặc `ATTACH_FILES` hoặc bot đang lỗi tạm thời!")
             return
         }
     }
 }
+
+/**
+ * @param {Discord.Message} MESSAGE 
+ * @param {Array} embedArray
+ * @param {Array} attachfilesArray
+ */
 
 module.exports.wheatEmbedAttachFilesSend = async (MESSAGE,embedArray,attachfilesArray) => {
     try {
@@ -44,12 +61,22 @@ module.exports.wheatSampleEmbedGenerate = async (type=false) => {
     return embed
 }
 
+/**
+ * @param {string} addressJSON
+ */
+
 module.exports.wheatReadJSON = async (addressJSON) => {
     const json = JSON.parse(fs.readFileSync(addressJSON, 'utf8'))
     return json
 }
 
-module.exports.wheatGetUserByIdOrMention = async ({client,arguments,defaultID}) => {
+/**
+ * @param {Array} arguments
+ * @param {Discord.Client} client
+ * @param {string} defaultID
+ */
+
+module.exports.wheatGetUserByIdOrMention = async (client,arguments,defaultID) => {
     let USER = defaultID
     if(arguments) {
         let _id = arguments.split('<@!') 
@@ -64,6 +91,12 @@ module.exports.wheatGetUserByIdOrMention = async ({client,arguments,defaultID}) 
         return undefined
     }
 }
+
+/**
+ * @param {Discord.Message} MESSAGE 
+ * @param {string} content 
+ * @param {string} customTitle
+ */
 
 module.exports.wheatSendErrorMessage = async (MESSAGE,content,customTitle=undefined) => {
     const embed = new Discord.MessageEmbed()
@@ -84,6 +117,12 @@ module.exports.wheatSendErrorMessage = async (MESSAGE,content,customTitle=undefi
     }
 }
 
+/**
+ * @param {Discord.Message} MESSAGE 
+ * @param {Array} embedArray
+ * @param {Array} componentsArray
+ */
+
 module.exports.wheatEmbedButton = async (MESSAGE,embedArray,componentsArray) => {
     try {
         const msg = await MESSAGE.channel.send({embeds:embedArray,components:componentsArray})
@@ -94,4 +133,30 @@ module.exports.wheatEmbedButton = async (MESSAGE,embedArray,componentsArray) => 
             return
         }
     }
+}
+
+/**
+ * @param {Array} array
+ */
+
+module.exports.wheatShuffleArray = (array) => {
+    array.sort(() => Math.random()-Math.random())
+    return array
+}
+
+/**
+ * @param {Number} min
+ * @param {Number} max
+ */
+
+module.exports.wheatRandomNumberBetween = (min, max) => {
+    return Math.floor(Math.random()*(max-min+1)+min)
+}
+
+/**
+ * @param {Array} array
+ */
+
+module.exports.wheatRandomElementFromArray = (array) => {
+    return array[Math.floor(Math.random()*(array.length-1))]
 }
