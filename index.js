@@ -1,5 +1,6 @@
 const Discord = require('discord.js')
 const fs = require('fs')
+const errorSolve = require('./scripts/errorSolve')
 
 /**
  * @param {Discord.Message} MESSAGE 
@@ -11,10 +12,7 @@ module.exports.wheatSend = async (MESSAGE,content) => {
         const msg = await MESSAGE.channel.send(content)
         return msg
     } catch(error) {
-        if(error) {
-            await MESSAGE.author.send("Bot bị thiếu 1 trong các quyền `SEND_MESSAGES`, `EMBED_LINKS` hoặc `ATTACH_FILES` hoặc bot đang lỗi tạm thời!")
-            return
-        }
+        await errorSolve.errorSolve(MESSAGE,error)
     }
 }
 
@@ -28,11 +26,7 @@ module.exports.wheatEmbedSend = async (MESSAGE,embedArray) => {
         const msg = await MESSAGE.channel.send({embeds:embedArray})
         return msg
     } catch(error) {
-        if(error) {
-            console.log(`wheatEmbedSend: ${error}`)
-            await MESSAGE.author.send("Bot bị thiếu 1 trong các quyền `SEND_MESSAGES`, `EMBED_LINKS` hoặc `ATTACH_FILES` hoặc bot đang lỗi tạm thời!")
-            return
-        }
+        await errorSolve.errorSolve(MESSAGE,error)
     }
 }
 
@@ -47,10 +41,7 @@ module.exports.wheatEmbedAttachFilesSend = async (MESSAGE,embedArray,attachfiles
         const msg = await MESSAGE.channel.send({embeds:embedArray,files:attachfilesArray})
         return msg
     } catch(error) {
-        if(error) {
-            await MESSAGE.author.send("Bot bị thiếu 1 trong các quyền `SEND_MESSAGES`, `EMBED_LINKS` hoặc `ATTACH_FILES` hoặc bot đang lỗi tạm thời!")
-            return
-        }
+        await errorSolve.errorSolve(MESSAGE,error)
     }
 }
 
@@ -110,10 +101,7 @@ module.exports.wheatSendErrorMessage = async (MESSAGE,content,customTitle=undefi
         return msg
     }
     catch(error) {
-        if(error) {
-            await MESSAGE.author.send("Bot bị thiếu 1 trong các quyền `SEND_MESSAGES`, `EMBED_LINKS` hoặc `ATTACH_FILES` hoặc bot đang lỗi tạm thời!")
-            return
-        }
+        await errorSolve.errorSolve(MESSAGE,error)
     }
 }
 
@@ -128,10 +116,7 @@ module.exports.wheatEmbedButton = async (MESSAGE,embedArray,componentsArray) => 
         const msg = await MESSAGE.channel.send({embeds:embedArray,components:componentsArray})
         return msg
     } catch(error) {
-        if(error) {
-            await MESSAGE.author.send("Bot bị thiếu 1 trong các quyền `SEND_MESSAGES`, `EMBED_LINKS` hoặc `ATTACH_FILES` hoặc bot đang lỗi tạm thời!")
-            return
-        }
+        await errorSolve.errorSolve(MESSAGE,error)
     }
 }
 
