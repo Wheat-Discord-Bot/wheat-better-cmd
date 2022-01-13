@@ -62,17 +62,20 @@ module.exports.wheatReadJSON = async (addressJSON) => {
 }
 
 /**
- * @param {Array} arguments
+ * @param {String} arguments
  * @param {Discord.Client} client
  * @param {string} defaultID
+ * @returns {Promise<Discord.User>}
  */
 
 module.exports.wheatGetUserByIdOrMention = async (client,arguments,defaultID) => {
     let USER = defaultID
     if(arguments) {
-        let _id = arguments.split('<@!') 
-        _id = _id[_id.length-1].split('>')
-        USER = _id[0]
+        USER = ""
+        for(const i in arguments) {
+            if(48<=arguments.charCodeAt(i)&&arguments.charCodeAt(i)<=57)
+                USER+=arguments[i]
+        }
     }
     try {
         USER = await client.users.fetch(USER)
