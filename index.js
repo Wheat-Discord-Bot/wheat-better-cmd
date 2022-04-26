@@ -48,7 +48,7 @@ module.exports.wheatEmbedAttachFilesSend = async (MESSAGE,embedArray,attachfiles
 module.exports.wheatSampleEmbedGenerate = async (type=false) => {
     const embed = new Discord.MessageEmbed()
     embed.setColor('#ffd500')
-    if(type) embed.setThumbnail('https://i.imgur.com/o31SePR.png')
+    if(type) embed.setThumbnail('https://i.imgur.com/0NYNs86.png')
     return embed
 }
 
@@ -81,7 +81,7 @@ module.exports.wheatGetUserByIdOrMention = async (client,arguments,defaultID) =>
         USER = await client.users.fetch(USER)
         return USER
     } catch (error) {
-        console.error(`getUserByIDorMentions: ${error.message}`)
+        // console.error(`getUserByIDorMentions: ${error.message}`)
         return undefined
     }
 }
@@ -95,8 +95,8 @@ module.exports.wheatGetUserByIdOrMention = async (client,arguments,defaultID) =>
 module.exports.wheatSendErrorMessage = async (MESSAGE,content,customTitle=undefined) => {
     const embed = new Discord.MessageEmbed()
     embed.setColor('#ffd500')
-    embed.setThumbnail('https://i.imgur.com/o31SePR.png')
-    embed.setTitle(customTitle?customTitle:`Thực Thi Thất Bại`)
+    embed.setThumbnail('https://i.imgur.com/0NYNs86.png')
+    embed.setTitle(customTitle?customTitle:(require(`./language/${MESSAGE.language}.json`).failExecution))
     embed.setDescription(content)
 
     try {

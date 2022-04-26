@@ -1,0 +1,5 @@
+{
+    "failExecution":"Thực Thi Thất Bại!",
+    "botMissingPermissions":"Bot bị thiếu 1 trong các quyền `SEND_MESSAGES`, `EMBED_LINKS` hoặc `ATTACH_FILES`!",
+    "undefinedError":"Đã có lỗi trong quá trình thực thi, vui lòng thử lại sau ít phút!"
+}

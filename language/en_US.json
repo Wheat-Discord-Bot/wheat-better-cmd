@@ -1,0 +1,5 @@
+{
+    "failExecution":"Execute Unsuccessfully!",
+    "botMissingPermissions":"Bot is missing one of some permissions: `SEND_MESSAGES`, `EMBED_LINKS` or `ATTACH_FILES`!",
+    "undefinedError":"Undefined error, try again later!"
+}
